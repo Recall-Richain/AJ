@@ -1,0 +1,234 @@
+<div class="container" ng-controller="myCtrl">
+<h2>Full Name Input with Default Values</h2>
+<label for="firstName">First Name:</label>
+<input type="text" ng-model="firstName" id="firstName"
+placeholder="Enter your first name" value="John">
+<label for="lastName">Last Name:</label>
+<input type="text" ng-model="lastName" id="lastName"
+placeholder="Enter your last name" value="Doe">
+<br>
+<span class="fullName">Full Name: {{firstName + ' ' + lastName}}</span>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+$scope.firstName = "John";
+$scope.lastName = "Doe";
+});
+</script>
+</body>
+</html>
+
+
+p2
+<body>
+<div class="container" ng-controller="shoppingListCtrl">
+<h1>Shopping List</h1>
+<ul class="shopping-list">
+<li ng-repeat="item in shoppingItems">
+<input type="text" ng-model="item" placeholder="Enter item">
+<button ng-click="removeItem(item)">Remove</button>
+</li>
+</ul>
+<input type="text" ng-model="newItem" placeholder="Add new item">
+<button ng-click="addItem()">Add</button>
+</div>
+<script>
+var app = angular.module('shoppingListApp', []);
+app.controller('shoppingListCtrl', function($scope) {
+$scope.shoppingItems = ["Milk", "Bread", "Eggs"];
+$scope.addItem = function() {
+if ($scope.newItem) {
+$scope.shoppingItems.push($scope.newItem);
+$scope.newItem = "";
+}
+};
+$scope.removeItem = function(item) {
+var index = $scope.shoppingItems.indexOf(item);
+if (index >= 0) {
+$scope.shoppingItems.splice(index, 1);
+}
+<body>
+<div class="container" ng-controller="shoppingListCtrl">
+<h1>Shopping List</h1>
+<ul class="shopping-list">
+<li ng-repeat="item in shoppingItems">
+<input type="text" ng-model="item" placeholder="Enter item">
+<button ng-click="removeItem(item)">Remove</button>
+</li>
+</ul>
+<input type="text" ng-model="newItem" placeholder="Add new item">
+<button ng-click="addItem()">Add</button>
+</div>
+<script>
+var app = angular.module('shoppingListApp', []);
+app.controller('shoppingListCtrl', function($scope) {
+$scope.shoppingItems = ["Milk", "Bread", "Eggs"];
+$scope.addItem = function() {
+if ($scope.newItem) {
+$scope.shoppingItems.push($scope.newItem);
+$scope.newItem = "";
+}
+};
+$scope.removeItem = function(item) {
+
+var index = $scope.shoppingItems.indexOf(item);
+if (index >= 0) {
+$scope.shoppingItems.splice(index, 1);
+}
+};
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+p3
+<!DOCTYPE html>
+<html ng-app="calculatorApp">
+<head>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></
+scr ipt>
+<style>
+body{
+font-family: sans-serif;
+}
+.container {
+margin: 110px;
+padding:20px;
+border: 20px;
+}
+.operator-button {
+padding: 5px 10px;
+border:3px solid green;
+background-color:skyblue;
+cursor:pointer;
+}
+</style>
+</head>
+<div class="container" ng-controller="calculatorController">
+<div class="operator-button"
+<h2>Simple Calculator</h2>
+<input type="number" ng-model="num1" placeholder="Enter number 1" >
+<input type="number" ng-model="num2" placeholder="Enter number 2">
+<select class="operator-button" ng-model="operator">
+<option value="+">Addition</option>
+<option value="-">Subtraction</option>
+<option value="*">Multiplication</option>
+<option value="/">Division</option>
+</select>
+<button class="operator-button" ng-click="calculate()">Calculate</button>
+<span class="result">Result: {{ result }}</span>
+</div>
+</div>
+</html>
+<script>
+var app = angular.module('calculatorApp', []);
+app.controller('calculatorController', function($scope) {
+$scope.num1 = 0;
+$scope.num2 = 0;
+$scope.operator = '+';
+$scope.result = 0;
+$scope.calculate =
+function() { if
+($scope.operator === '+') {
+$scope.result = $scope.num1 + $scope.num2;
+} else if ($scope.operator === '-') {
+$scope.result = $scope.num1 - $scope.num2;
+} else if ($scope.operator === '*') {
+$scope.result = $scope.num1 * $scope.num2;
+} else if ($scope.operator ===
+'/') { if ($scope.num2 === 0) {
+$scope.result = 'Cannot divide by zero';
+} else {
+$scope.result = $scope.num1 / $scope.num2;
+}
+}
+};
+});
+</script>
+</body>
+</html>
+
+
+
+p4
+Write an Angular JS application that can calculate factorial and compute
+square based on given user input.
+<!DOCTYPE html>
+<html ng-app="mathApp">
+<head>
+<title>Math Operations</title>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></
+scr ipt>
+<style>
+body {
+font-family:sans-serif;
+}
+.container {
+margin: 20px;
+padding:
+20px;
+border: 1px solid #ccc;
+}
+.input-field {
+width: 100%;
+padding: 5px;
+border: 1px solid #ccc;
+}
+.button {
+padding: 5px 10px;
+border: 1px solid #ccc;
+cursor: pointer;
+}
+.result 
+margin-top:
+10px; fontweight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container" ng-controller="mathCtrl">
+<h2>Math Operations</h2>
+<h3>Factorial</h3>
+<input type="number" ng-model="number" class="input-field"
+placeholder="Enter number">
+<button class="button" ng-click="calculateFactorial()">Calculate
+Factorial</button>
+<span class="result">Factorial: {{ factorialResult }}</span>
+<h3>Square</h3>
+<input type="number" ng-model="number2" class="input-field"
+placeholder="Enter number">
+<button class="button" ng-click="calculateSquare()">Calculate
+Square</button>
+<span class="result">Square: {{ squareResult }}</span>
+</div>
+<script>
+var app = angular.module('mathApp', []);
+app.controller('mathCtrl', function($scope) {
+  $scope.number = 0;
+  $scope.factorialResult = 0;
+  $scope.number2 = 0;
+  $scope.squareResult = 0;
+  $scope.calculateFactorial = function() {
+  if ($scope.number < 0) {
+  alert("Invalid input. Please enter a non-negative number.");
+  return;
+  }
+$scope.factorialResult = 1;
+for (var i = $scope.number; i > 1; i--) {
+$scope.factorialResult *= i;
+}
+};
+$scope.calculateSquare = function() {
+$scope.squareResult = $scope.number2 * $scope.number2;
+};
+});
+</script>
+</body>
+</html>
