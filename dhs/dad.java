@@ -60,6 +60,7 @@ for(int i=0;i<data.length;i++)
         valid = false;
         break;
 }
+        system.out.print("heelo world: by myself");
 
 if(valid==true) 
     System.out.println("Data stream is valid");
